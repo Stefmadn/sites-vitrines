@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+const CONFIG = {
+  nom:         "FERRONI",
+  metier:      "Maçonnerie & Rénovation",
+  accroche:    "ON BÂTIT CE QUE LES AUTRES N'OSENT PAS",
+  description: "20 ans de métier. Fondations, rénovation complète, extension, ravalement. Ferroni intervient sur tous vos projets de A à Z dans les Bouches-du-Rhône.",
+  ville:       "Marseille",
+  adresse:     "Zone artisanale des Calanques, 13009 Marseille",
+  telephone:   "06 12 34 56 78",
+  email:       "devis@ferroni-maconnerie.fr",
+  horaires:    ["Lun–Ven : 7h30–18h00", "Samedi : 8h–12h sur RDV", "Urgences 7j/7"],
+  annees:      "20",
+  chantiers:   "340+",
+  satisfaction:"98%",
+  services: [
+    { num:"01", titre:"Maçonnerie",      texte:"Construction neuve, murs porteurs, fondations, dalles béton armé. Du sol aux murs, on fait tenir debout." },
+    { num:"02", titre:"Rénovation",      texte:"Réhabilitation complète d'appartements, maisons, locaux. Devis gratuit sous 48h, chantier livré dans les délais." },
+    { num:"03", titre:"Extension",       texte:"Agrandissement de maison, surélévation, véranda maçonnée. On repousse vos murs sans repousser vos rêves." },
+    { num:"04", titre:"Ravalement",      texte:"Enduits, isolation thermique par l'extérieur (ITE), peinture façade. Votre maison comme neuve, garantie décennale." },
+    { num:"05", titre:"Carrelage",       texte:"Pose de carrelage grand format, salle de bain, terrasse, piscine. Finitions au millimètre." },
+    { num:"06", titre:"Urgences",        texte:"Fissures, infiltrations, mur fissuré ? On se déplace sous 24h pour évaluer et sécuriser." },
+  ],
+  realisations: [
+    { titre:"Villa Cassis",      detail:"Rénovation complète 180m²", annee:"2024", tag:"Rénovation" },
+    { titre:"Résidence Aubagne", detail:"Extension + surélévation",  annee:"2024", tag:"Extension"  },
+    { titre:"Loft Cours Julien", detail:"Réhabilitation industrielle",annee:"2023", tag:"Loft"       },
+    { titre:"Mas Aix",           detail:"Ravalement ITE + enduit",   annee:"2023", tag:"Façade"     },
+  ],
+  avis: [
+    { nom:"Jean-Pierre V.", note:5, texte:"Ferroni a géré notre extension de 60m² de A à Z. Délais respectés, équipe sérieuse, résultat impeccable. Je recommande les yeux fermés." },
+    { nom:"Marie L.",       note:5, texte:"Rénovation complète de notre T4. Ils ont trouvé des solutions créatives à chaque problème. Rapport qualité/prix imbattable." },
+    { nom:"Karim B.",       note:5, texte:"Intervention rapide pour des fissures importantes. Diagnostic précis, travaux propres et garantie sérieuse. Merci à toute l'équipe." },
+  ],
+  couleur1: "#FF4D00",
+  couleur2: "#0D0D0D",
+  couleur3: "#F0EDE8",
+  accent:   "#FFD600",
+  maps_src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2903.0!2d5.3698!3d43.2965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDPCsDE3JzQ3LjQiTiA1wrAyMicxMS4zIkU!5e0!3m2!1sfr!2sfr!4v1234567890",
+  instagram:"https://instagram.com/ferroni.maconnerie",
+  facebook: "",
+};
+</script>
+
+<title id="pt">—</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,600;0,700;0,900;1,900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --c1:#FF4D00;--c2:#0D0D0D;--c3:#F0EDE8;--ca:#FFD600;
+  --f-display:'Bebas Neue',sans-serif;
+  --f-body:'Barlow',sans-serif;
+  --f-mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth;background:#0D0D0D !important;background-color:#0D0D0D !important}
+body{font-family:var(--f-body);background:#0D0D0D !important;background-color:#0D0D0D !important;color:var(--c3);overflow-x:hidden;cursor:none}
+
+/* CURSOR */
+.cursor{position:fixed;width:12px;height:12px;background:var(--c1);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform 0.1s,width 0.2s,height 0.2s;mix-blend-mode:difference}
+.cursor-ring{position:fixed;width:40px;height:40px;border:1.5px solid var(--ca);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all 0.12s ease;mix-blend-mode:difference}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:1.2rem 3vw;display:flex;align-items:center;justify-content:space-between;mix-blend-mode:normal}
+nav::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,13,13,0.95),transparent);pointer-events:none}
+.nav-logo{position:relative;font-family:var(--f-display);font-size:2rem;letter-spacing:0.08em;color:var(--c3);line-height:1}
+.nav-logo span{color:var(--c1)}
+.nav-tag{position:relative;font-family:var(--f-mono);font-size:0.65rem;color:rgba(240,237,232,0.4);text-transform:uppercase;letter-spacing:0.15em;margin-top:0.1rem}
+.nav-right{display:flex;align-items:center;gap:2rem;position:relative}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-family:var(--f-mono);font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(240,237,232,0.5);text-decoration:none;transition:color 0.2s}
+.nav-links a:hover{color:var(--ca)}
+.nav-cta{background:var(--c1);color:var(--c2) !important;padding:0.6rem 1.4rem;font-weight:700 !important;clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px))}
+.nav-cta:hover{background:var(--ca) !important}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:8rem 3vw 4rem;position:relative;overflow:hidden}
+.hero-bg-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,77,0,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,77,0,0.07) 1px,transparent 1px);background-size:80px 80px;animation:gridShift 20s linear infinite}
+.hero-noise{position:absolute;inset:0;opacity:0.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.hero-accent-line{position:absolute;top:0;left:3vw;width:2px;height:100%;background:linear-gradient(to bottom,transparent,var(--c1) 30%,var(--c1) 70%,transparent);opacity:0.4}
+.hero-year{position:absolute;top:50%;right:3vw;transform:translateY(-50%) rotate(90deg);font-family:var(--f-mono);font-size:0.65rem;letter-spacing:0.3em;color:rgba(240,237,232,0.2);text-transform:uppercase;white-space:nowrap}
+
+.hero-kicker{font-family:var(--f-mono);font-size:0.7rem;letter-spacing:0.25em;color:var(--c1);text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem;animation:fadeUp 0.7s 0.2s both}
+.hero-kicker::before{content:'';width:40px;height:1px;background:var(--c1)}
+
+.hero-title{font-family:var(--f-display);font-size:clamp(4rem,13vw,13rem);line-height:0.88;letter-spacing:0.02em;animation:fadeUp 0.7s 0.35s both;position:relative}
+.hero-title .line1{display:block;color:var(--c3)}
+.hero-title .line2{display:block;color:var(--c1);-webkit-text-stroke:0px;text-shadow:0 0 80px rgba(255,77,0,0.5)}
+.hero-title .line3{display:block;color:transparent;-webkit-text-stroke:1px rgba(240,237,232,0.25)}
+
+.hero-bottom{display:flex;align-items:flex-end;justify-content:space-between;margin-top:3rem;flex-wrap:wrap;gap:2rem;animation:fadeUp 0.7s 0.55s both}
+.hero-desc{max-width:400px;font-size:1rem;line-height:1.6;color:rgba(240,237,232,0.6);border-left:2px solid var(--c1);padding-left:1.2rem}
+.hero-stats{display:flex;gap:3rem}
+.stat-item{text-align:right}
+.stat-num{font-family:var(--f-display);font-size:3rem;line-height:1;color:var(--ca)}
+.stat-label{font-family:var(--f-mono);font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(240,237,232,0.4);margin-top:0.2rem}
+
+.hero-cta{display:flex;flex-direction:row;align-items:center;gap:1.5rem;margin-top:2.5rem;animation:fadeUp 0.7s 0.7s both}
+.cta-btn{background:var(--c1);color:var(--c2);font-family:var(--f-display);font-size:1.1rem;letter-spacing:0.12em;padding:1rem 2.5rem;text-decoration:none;clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));transition:all 0.2s;display:block}
+.cta-btn:hover{background:var(--ca);transform:translate(-3px,-3px);box-shadow:6px 6px 0 var(--c1)}
+.cta-scroll{font-family:var(--f-mono);font-size:0.6rem;letter-spacing:0.2em;color:rgba(240,237,232,0.3);text-transform:uppercase;writing-mode:vertical-rl}
+
+/* TICKER */
+.ticker-wrap{overflow:hidden;background:var(--c1);padding:0.75rem 0;border-top:2px solid var(--ca);border-bottom:2px solid var(--ca)}
+.ticker-track{display:flex;gap:0;animation:ticker 18s linear infinite;width:max-content}
+.ticker-item{font-family:var(--f-display);font-size:1.1rem;letter-spacing:0.08em;color:var(--c2);padding:0 2rem;white-space:nowrap;display:flex;align-items:center;gap:2rem}
+.ticker-item::after{content:'◆';color:rgba(13,13,13,0.4);font-size:0.7rem}
+
+/* SERVICES */
+#services{padding:6rem 3vw}
+.section-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:4rem;flex-wrap:wrap;gap:2rem}
+.section-num{font-family:var(--f-display);font-size:8rem;color:rgba(240,237,232,0.04);line-height:1;margin-bottom:-1.5rem}
+.section-label-tag{font-family:var(--f-mono);font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--c1);margin-bottom:0.5rem}
+.section-big-title{font-family:var(--f-display);font-size:clamp(2.5rem,6vw,5.5rem);letter-spacing:0.04em;line-height:0.9}
+.section-sub-text{font-size:0.9rem;color:rgba(240,237,232,0.5);max-width:280px;line-height:1.6;text-align:right}
+
+.services-list{display:grid;gap:0;border-top:1px solid rgba(240,237,232,0.08)}
+.service-row{display:grid;grid-template-columns:80px 1fr auto;align-items:center;gap:2rem;padding:1.8rem 0;border-bottom:1px solid rgba(240,237,232,0.08);position:relative;overflow:hidden;transition:padding-left 0.3s;cursor:default}
+.service-row::before{content:'';position:absolute;left:0;top:0;bottom:0;width:0;background:rgba(255,77,0,0.06);transition:width 0.4s ease}
+.service-row:hover{padding-left:1.5rem}
+.service-row:hover::before{width:100%}
+.service-row:hover .service-row-num{color:var(--c1)}
+.service-row:hover .service-row-arrow{transform:translateX(0);opacity:1}
+.service-row-num{font-family:var(--f-mono);font-size:0.7rem;color:rgba(240,237,232,0.2);letter-spacing:0.1em;transition:color 0.3s}
+.service-row-content{}
+.service-row-titre{font-family:var(--f-display);font-size:1.6rem;letter-spacing:0.06em;margin-bottom:0.3rem}
+.service-row-texte{font-size:0.85rem;color:rgba(240,237,232,0.5);line-height:1.5;max-width:600px}
+.service-row-arrow{font-size:1.5rem;color:var(--ca);transform:translateX(-10px);opacity:0;transition:all 0.3s}
+
+/* RÉALISATIONS */
+#realisations{padding:6rem 3vw;background:rgba(255,255,255,0.02)}
+.realisations-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5px;margin-top:4rem}
+.real-card{position:relative;overflow:hidden;aspect-ratio:4/3;background:rgba(240,237,232,0.04);border:1px solid rgba(240,237,232,0.06);display:flex;flex-direction:column;justify-content:flex-end;padding:2rem;cursor:default}
+.real-card-bg{position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,77,0,0.15),rgba(13,13,13,0.9));transition:opacity 0.4s}
+.real-card:nth-child(2) .real-card-bg{background:linear-gradient(135deg,rgba(255,214,0,0.12),rgba(13,13,13,0.9))}
+.real-card:nth-child(3) .real-card-bg{background:linear-gradient(135deg,rgba(240,237,232,0.08),rgba(13,13,13,0.9))}
+.real-card:nth-child(4) .real-card-bg{background:linear-gradient(135deg,rgba(255,77,0,0.2),rgba(13,13,13,0.85))}
+.real-card:hover .real-card-bg{opacity:0.7}
+.real-card-pattern{position:absolute;inset:0;opacity:0.06;background-image:repeating-linear-gradient(45deg,var(--c3) 0,var(--c3) 1px,transparent 0,transparent 50%);background-size:20px 20px;transition:opacity 0.3s}
+.real-card:hover .real-card-pattern{opacity:0.12}
+.real-card-content{position:relative;z-index:1}
+.real-tag{display:inline-block;font-family:var(--f-mono);font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;background:var(--c1);color:var(--c2);padding:0.25rem 0.6rem;margin-bottom:0.75rem;clip-path:polygon(0 0,calc(100% - 4px) 0,100% 4px,100% 100%,4px 100%,0 calc(100% - 4px))}
+.real-titre{font-family:var(--f-display);font-size:2rem;letter-spacing:0.04em;line-height:1;margin-bottom:0.5rem}
+.real-detail{font-size:0.8rem;color:rgba(240,237,232,0.5)}
+.real-annee{position:absolute;top:1.5rem;right:1.5rem;font-family:var(--f-mono);font-size:0.65rem;color:rgba(240,237,232,0.3);letter-spacing:0.1em}
+
+/* AVIS */
+#avis{padding:6rem 3vw}
+.avis-stack{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:4rem}
+.avis-card{padding:2rem;border:1px solid rgba(240,237,232,0.08);position:relative;overflow:hidden;transition:border-color 0.3s}
+.avis-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--c1);transform:scaleX(0);transform-origin:left;transition:transform 0.4s}
+.avis-card:hover{border-color:rgba(255,77,0,0.3)}
+.avis-card:hover::after{transform:scaleX(1)}
+.avis-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.5rem}
+.avis-initial{font-family:var(--f-display);font-size:3rem;color:var(--c1);line-height:1;opacity:0.6}
+.avis-stars{color:var(--ca);font-size:0.85rem;letter-spacing:0.1em}
+.avis-texte{font-size:0.9rem;line-height:1.7;color:rgba(240,237,232,0.7);margin-bottom:1.5rem;font-style:italic}
+.avis-nom{font-family:var(--f-mono);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(240,237,232,0.4)}
+
+/* CONTACT */
+#contact{padding:6rem 3vw;background:rgba(255,255,255,0.015)}
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:5rem;margin-top:4rem}
+.contact-big-cta{margin-bottom:3rem}
+.contact-big-cta a{font-family:var(--f-display);font-size:clamp(2rem,5vw,4rem);letter-spacing:0.04em;color:var(--c3);text-decoration:none;display:flex;align-items:center;gap:1rem;transition:color 0.2s;line-height:1.1}
+.contact-big-cta a:hover{color:var(--c1)}
+.contact-big-cta a span{color:var(--ca)}
+.contact-infos{display:flex;flex-direction:column;gap:1.5rem}
+.ci{display:grid;grid-template-columns:100px 1fr;gap:1rem;align-items:start;padding-bottom:1.5rem;border-bottom:1px solid rgba(240,237,232,0.06)}
+.ci-label{font-family:var(--f-mono);font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--c1);padding-top:0.2rem}
+.ci-value{font-size:0.9rem;color:rgba(240,237,232,0.75);line-height:1.6}
+.map-container{border:1px solid rgba(240,237,232,0.08);overflow:hidden;height:100%;min-height:320px}
+.map-container iframe{width:100%;height:100%;border:none;filter:grayscale(100%) invert(85%) contrast(90%);min-height:320px}
+
+/* FOOTER */
+footer{padding:2rem 3vw;border-top:1px solid rgba(240,237,232,0.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer-logo-wrap{display:flex;align-items:baseline;gap:1rem}
+.footer-logo{font-family:var(--f-display);font-size:1.5rem;letter-spacing:0.08em;color:var(--c3)}
+.footer-logo span{color:var(--c1)}
+.footer-tagline{font-family:var(--f-mono);font-size:0.6rem;color:rgba(240,237,232,0.25);letter-spacing:0.1em;text-transform:uppercase}
+.footer-copy{font-family:var(--f-mono);font-size:0.6rem;color:rgba(240,237,232,0.2);letter-spacing:0.08em}
+.footer-socials{display:flex;gap:0.75rem}
+.footer-socials a{font-family:var(--f-mono);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(240,237,232,0.3);text-decoration:none;padding:0.4rem 0.8rem;border:1px solid rgba(240,237,232,0.1);transition:all 0.2s}
+.footer-socials a:hover{border-color:var(--c1);color:var(--c1)}
+
+/* BADGE */
+.devis-badge{position:fixed;bottom:2rem;right:2rem;z-index:999;background:var(--ca);color:var(--c2);font-family:var(--f-display);font-size:1rem;letter-spacing:0.08em;padding:0.9rem 1.8rem;text-decoration:none;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));box-shadow:4px 4px 0 var(--c1);animation:badgePop 0.6s 1.5s cubic-bezier(0.34,1.56,0.64,1) both;transition:transform 0.2s,box-shadow 0.2s;display:none}
+@media(min-width:769px){.devis-badge{display:block}}
+.devis-badge:hover{transform:translate(-3px,-3px);box-shadow:7px 7px 0 var(--c1)}
+
+/* ANIMS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes gridShift{from{background-position:0 0}to{background-position:80px 80px}}
+@keyframes badgePop{from{opacity:0;transform:scale(0.4) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+@keyframes revealLeft{from{opacity:0;transform:translateX(-30px)}to{opacity:1;transform:translateX(0)}}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+
+@media(max-width:768px){
+  .nav-links{display:none}
+  .realisations-grid{grid-template-columns:1fr}
+  .avis-stack{grid-template-columns:1fr}
+  .contact-wrap{grid-template-columns:1fr}
+  .hero-stats{display:none}
+  .hero-bottom{flex-direction:column;gap:1.5rem}
+  .services-list .service-row{grid-template-columns:60px 1fr}
+  .service-row-arrow{display:none}
+  body{cursor:auto}
+  .cursor,.cursor-ring{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="curRing"></div>
+
+<!-- NAV -->
+<nav>
+  <div>
+    <div class="nav-logo" id="nav-logo">—</div>
+    <div class="nav-tag" id="nav-tag">—</div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#realisations">Réalisations</a></li>
+    <li><a href="#avis">Avis</a></li>
+    <li><a href="#contact" class="nav-cta">Devis gratuit</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-noise"></div>
+  <div class="hero-accent-line"></div>
+  <div class="hero-year" id="hero-year">—</div>
+
+  <div class="hero-kicker" id="hero-kicker">—</div>
+  <h1 class="hero-title" id="hero-title">—</h1>
+
+  <div class="hero-bottom">
+    <p class="hero-desc" id="hero-desc">—</p>
+    <div class="hero-stats" id="hero-stats"></div>
+  </div>
+
+  <div class="hero-cta">
+    <a href="#contact" class="cta-btn">DEVIS GRATUIT</a>
+    <span class="cta-scroll">Découvrir ↓</span>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-track" id="ticker"></div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-header">
+    <div>
+      <div class="section-num">02</div>
+      <p class="section-label-tag">Ce qu'on fait</p>
+      <h2 class="section-big-title" id="services-title">NOS<br>MÉTIERS</h2>
+    </div>
+    <p class="section-sub-text">Chaque chantier est un engagement. Délais tenus, travail propre, garantie décennale sur tous nos ouvrages.</p>
+  </div>
+  <div class="services-list" id="services-list"></div>
+</section>
+
+<!-- RÉALISATIONS -->
+<section id="realisations">
+  <div class="section-header">
+    <div>
+      <div class="section-num">03</div>
+      <p class="section-label-tag">Nos chantiers</p>
+      <h2 class="section-big-title">NOS<br>RÉALISATIONS</h2>
+    </div>
+  </div>
+  <div class="realisations-grid" id="realisations-grid"></div>
+</section>
+
+<!-- AVIS -->
+<section id="avis">
+  <div class="section-header">
+    <div>
+      <div class="section-num">04</div>
+      <p class="section-label-tag">Ils témoignent</p>
+      <h2 class="section-big-title">ILS NOUS<br>FONT <span style="color:var(--c1)">CONFIANCE</span></h2>
+    </div>
+  </div>
+  <div class="avis-stack" id="avis-stack"></div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header">
+    <div>
+      <div class="section-num">05</div>
+      <p class="section-label-tag">On vous répond sous 24h</p>
+      <h2 class="section-big-title">PARLONS<br>DE VOTRE<br><span style="color:var(--c1)">PROJET</span></h2>
+    </div>
+  </div>
+  <div class="contact-wrap">
+    <div>
+      <div class="contact-big-cta">
+        <a href="#" id="contact-tel-link">APPELEZ-NOUS <span id="contact-tel-display">—</span></a>
+      </div>
+      <div class="contact-infos" id="contact-infos"></div>
+    </div>
+    <div class="map-container">
+      <iframe id="maps-iframe" src="" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo-wrap">
+    <div class="footer-logo" id="footer-logo">—</div>
+    <div class="footer-tagline" id="footer-tagline">—</div>
+  </div>
+  <p class="footer-copy" id="footer-copy">—</p>
+  <div class="footer-socials" id="footer-socials"></div>
+</footer>
+
+<!-- BADGE -->
+<a class="devis-badge" href="#contact">DEVIS GRATUIT →</a>
+
+<script>
+// CSS vars
+document.documentElement.style.setProperty('--c1',CONFIG.couleur1);
+document.documentElement.style.setProperty('--c2',CONFIG.couleur2);
+document.documentElement.style.setProperty('--c3',CONFIG.couleur3);
+document.documentElement.style.setProperty('--ca',CONFIG.accent);
+
+// Cursor
+const cur=document.getElementById('cur'),curRing=document.getElementById('curRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
+(function animRing(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;curRing.style.left=rx+'px';curRing.style.top=ry+'px';requestAnimationFrame(animRing)})();
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.width='20px';cur.style.height='20px';curRing.style.width='60px';curRing.style.height='60px'});
+  el.addEventListener('mouseleave',()=>{cur.style.width='12px';cur.style.height='12px';curRing.style.width='40px';curRing.style.height='40px'});
+});
+
+// Meta
+document.getElementById('pt').textContent=`${CONFIG.nom} — ${CONFIG.metier} — ${CONFIG.ville}`;
+
+// Nav
+document.getElementById('nav-logo').innerHTML=`<span>${CONFIG.nom}</span>`;
+document.getElementById('nav-tag').textContent=CONFIG.metier+' · '+CONFIG.ville;
+
+// Hero
+document.getElementById('hero-year').textContent='EST. '+(new Date().getFullYear()-parseInt(CONFIG.annees));
+document.getElementById('hero-kicker').textContent='— '+CONFIG.metier+' · '+CONFIG.ville;
+const words=CONFIG.accroche.split(' ');
+const perLine=Math.ceil(words.length/3);
+const lines=[words.slice(0,perLine).join(' '),words.slice(perLine,perLine*2).join(' '),words.slice(perLine*2).join(' ')].filter(Boolean);
+document.getElementById('hero-title').innerHTML=lines.map((l,i)=>`<span class="line${i+1}">${l}</span>`).join('');
+document.getElementById('hero-desc').textContent=CONFIG.description;
+
+const stats=[{n:CONFIG.annees+'ans',l:'d\'expérience'},{n:CONFIG.chantiers,l:'chantiers'},{n:CONFIG.satisfaction,l:'satisfaction'}];
+document.getElementById('hero-stats').innerHTML=stats.map(s=>`<div class="stat-item"><div class="stat-num">${s.n}</div><div class="stat-label">${s.l}</div></div>`).join('');
+
+// Ticker
+const items=[CONFIG.nom,CONFIG.metier,CONFIG.ville,'Devis gratuit','Garantie décennale','Livraison dans les délais'];
+const track=document.getElementById('ticker');
+track.innerHTML=[...items,...items,...items,...items].map(i=>`<div class="ticker-item">${i}</div>`).join('');
+
+// Services
+document.getElementById('services-list').innerHTML=CONFIG.services.map(s=>`
+<div class="service-row reveal">
+  <span class="service-row-num">${s.num}</span>
+  <div class="service-row-content">
+    <div class="service-row-titre">${s.titre}</div>
+    <div class="service-row-texte">${s.texte}</div>
+  </div>
+  <span class="service-row-arrow">→</span>
+</div>`).join('');
+
+// Réalisations
+document.getElementById('realisations-grid').innerHTML=CONFIG.realisations.map(r=>`
+<div class="real-card reveal">
+  <div class="real-card-bg"></div>
+  <div class="real-card-pattern"></div>
+  <span class="real-annee">${r.annee}</span>
+  <div class="real-card-content">
+    <span class="real-tag">${r.tag}</span>
+    <div class="real-titre">${r.titre}</div>
+    <div class="real-detail">${r.detail}</div>
+  </div>
+</div>`).join('');
+
+// Avis
+document.getElementById('avis-stack').innerHTML=CONFIG.avis.map(a=>`
+<div class="avis-card reveal">
+  <div class="avis-top">
+    <div class="avis-initial">${a.nom[0]}</div>
+    <div class="avis-stars">${'★'.repeat(a.note)+'☆'.repeat(5-a.note)}</div>
+  </div>
+  <p class="avis-texte">"${a.texte}"</p>
+  <div class="avis-nom">${a.nom}</div>
+</div>`).join('');
+
+// Contact
+document.getElementById('contact-tel-link').href='tel:'+CONFIG.telephone;
+document.getElementById('contact-tel-display').textContent=CONFIG.telephone;
+const infos=[
+  {label:'Adresse',value:CONFIG.adresse},
+  {label:'Email',value:`<a href="mailto:${CONFIG.email}" style="color:inherit">${CONFIG.email}</a>`},
+  {label:'Horaires',value:CONFIG.horaires.join('<br>')}
+];
+document.getElementById('contact-infos').innerHTML=infos.map(i=>`
+<div class="ci">
+  <span class="ci-label">${i.label}</span>
+  <span class="ci-value">${i.value}</span>
+</div>`).join('');
+document.getElementById('maps-iframe').src=CONFIG.maps_src;
+
+// Footer
+document.getElementById('footer-logo').innerHTML=`<span>${CONFIG.nom}</span>`;
+document.getElementById('footer-tagline').textContent=CONFIG.metier;
+document.getElementById('footer-copy').textContent=`© ${new Date().getFullYear()} ${CONFIG.nom} · Tous droits réservés`;
+const fs=document.getElementById('footer-socials');
+if(CONFIG.instagram)fs.innerHTML+=`<a href="${CONFIG.instagram}" target="_blank">Instagram</a>`;
+if(CONFIG.facebook) fs.innerHTML+=`<a href="${CONFIG.facebook}"  target="_blank">Facebook</a>`;
+
+// Scroll reveal
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}});
+},{threshold:0.1});
+document.querySelectorAll('.reveal,.reveal-left').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
